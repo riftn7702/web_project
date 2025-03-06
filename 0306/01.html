@@ -6,6 +6,24 @@
     <title>Document</title>
 </head>
 <body>
-    <H1>Welcome HTML</H1>
+    <h1 id="dynamic-text">Welcome HTML</h1>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const h1 = document.getElementById('dynamic-text');
+            const content = h1.innerHTML;
+            h1.innerHTML = '';
+
+            let index = 0;
+            const interval = setInterval(() => {
+                if (index < content.length) {
+                    h1.innerHTML += content[index];
+                    index++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 3000 / content.length);
+        });
+    </script>
 </body>
 </html>
